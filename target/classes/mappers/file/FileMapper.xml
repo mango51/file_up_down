@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  연결시켜주는 다리 역할 mapper -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.FileMapper">
+	<resultMap type="com.care.root.dto.ShoesDTO" id="shoes">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="imgName" column="img_name"/>
+	</resultMap>
+	<!-- mapper 경로 확인 -->
+	<insert id ="saveData">
+		insert into shoes_image values(#{id},#{name},#{imgName})
+	</insert>
+	<select id="getShoesImage" resultMap ="shoes">
+	<!-- 위에서 resultMap 객체 shoes 만든 거 가지고 와서 해당 정보는 퀴리문을 통해 이 태그 안에서 활용하기 -->
+		select * from shoes_image
+	</select>
+</mapper>
+
+<!-- ctrl + f11 : 프로젝트 전체 시작하기 >> 홈 페이지로 출력!!! (http://localhost:8085/) -->
